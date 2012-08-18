@@ -95,7 +95,7 @@
     <Property Name="Icon" Type="varbinary(max)" Nullable="true" />
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="MinimumAge" Type="int" Nullable="false" />
-    <Property Name="InstalledAt" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InstalledAt" Type="nvarchar" Nullable="true" MaxLength="1000" />
     <Property Name="ApplicationGroup_Id" Type="uniqueidentifier" Nullable="true" />
   </EntityType>
   <EntityType Name="ApplicationGroup">
@@ -137,8 +137,8 @@
     <Property Name="LastUpdateDate" Type="datetime" Nullable="true" />
     <Property Name="MinutesLeft" Type="int" Nullable="false" />
     <Property Name="MinutesBonus" Type="int" Nullable="false" />
-    <Property Name="CPF" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Neighborhood" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CPF" Type="nvarchar" Nullable="true" MaxLength="11" />
+    <Property Name="Neighborhood" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="PasswordExpired" Type="bit" Nullable="false" />
     <Property Name="Parent_Id" Type="uniqueidentifier" Nullable="true" />
   </EntityType>
@@ -192,9 +192,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="MinutesPurchased">
@@ -211,7 +211,7 @@
       <PropertyRef Name="ShortName" />
     </Key>
     <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="ApplicationDependentPermission">
     <Key>
@@ -483,7 +483,7 @@
           <NavigationProperty Name="Client" Relationship="LanManagerModel.ApplicationDependentPermission" FromRole="Application" ToRole="Client" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="MinimumAge" Type="Int32" Nullable="false" />
-          <Property Name="InstalledAt" Type="String" Nullable="true" /></EntityType>
+          <Property Name="InstalledAt" Type="String" Nullable="true" MaxLength="1000" /></EntityType>
         <EntityType Name="ApplicationGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -534,8 +534,8 @@
           <Property Name="MinutesLeft" Type="Int32" Nullable="false" />
           <Property Name="MinutesBonus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MinutesPurchased" Relationship="LanManagerModel.FK_MinutesPurchased_Client" FromRole="Client" ToRole="MinutesPurchased" />
-          <Property Name="CPF" Type="String" Nullable="true" />
-          <Property Name="Neighborhood" Type="String" Nullable="true" />
+          <Property Name="CPF" Type="String" Nullable="true" MaxLength="11" />
+          <Property Name="Neighborhood" Type="String" Nullable="true" MaxLength="200" />
           <Property Name="PasswordExpired" Type="Boolean" Nullable="false" /></EntityType>
         <EntityType Name="ClientApplicationLog">
           <Key>
@@ -630,9 +630,9 @@
           <Key>
             <PropertyRef Name="Id" /></Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
-          <Property Name="FullName" Type="String" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" />
           <Property Name="Active" Type="Boolean" Nullable="false" /></EntityType>
         <EntityType Name="MinutesPurchased">
           <Key>
@@ -648,7 +648,7 @@
           <Key>
             <PropertyRef Name="ShortName" /></Key>
           <Property Name="ShortName" Type="String" Nullable="false" MaxLength="20" />
-          <Property Name="Value" Type="String" Nullable="false" /></EntityType></Schema>
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="200" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
