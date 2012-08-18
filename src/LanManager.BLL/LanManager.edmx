@@ -649,7 +649,7 @@
         <EntityType Name="Config">
           <Key>
             <PropertyRef Name="ShortName" /></Key>
-          <Property Name="ShortName" Type="String" Nullable="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="20" />
           <Property Name="Value" Type="String" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
