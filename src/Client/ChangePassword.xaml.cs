@@ -19,10 +19,10 @@ namespace LanManager.Client
     /// </summary>
     public partial class ChangePassword : Window
     {
-        private DAL.Client client;
+        private BLL.Client client;
         private bool shouldClose;
 
-        public ChangePassword(DAL.Client client)
+        public ChangePassword(BLL.Client client)
         {
             this.client = client;
             InitializeComponent();

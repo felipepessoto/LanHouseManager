@@ -30,15 +30,15 @@
                 <Grid Margin="0">
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="6,20,0,0" Name="txtSearch" VerticalAlignment="Top" Width="120" />
                     <Button Content="Buscar"  Height="23" HorizontalAlignment="Left" Margin="150,20,0,0" Width="100" Name="btnSearchApp" VerticalAlignment="Top" Click="btnSearchApp_Click"></Button>
-                    <my:DataGrid AutoGenerateColumns="False" Margin="6,54,6,6" Name="dtgSearchResult" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="dtgSearchResult_MouseDoubleClick" BeginningEdit="dtgSearchResult_BeginningEdit">
-                        <my:DataGrid.Columns>
-                            <my:DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"/>
-                            <my:DataGridTextColumn Header="Nome" Binding="{Binding Path=Name}"/>
-                            <my:DataGridTextColumn Header="Caminho" Binding="{Binding Path=DefaultPath}"/>
-                            <my:DataGridTextColumn Header="Idade mínima" Binding="{Binding Path=MinimumAge}"/>
-                            <my:DataGridCheckBoxColumn Header="Ativo" Binding="{Binding Path=Active}"/>
-                        </my:DataGrid.Columns>
-                    </my:DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Margin="6,54,6,6" Name="dtgSearchResult" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="dtgSearchResult_MouseDoubleClick" BeginningEdit="dtgSearchResult_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"/>
+                            <DataGridTextColumn Header="Nome" Binding="{Binding Path=Name}"/>
+                            <DataGridTextColumn Header="Caminho" Binding="{Binding Path=DefaultPath}"/>
+                            <DataGridTextColumn Header="Idade mínima" Binding="{Binding Path=MinimumAge}"/>
+                            <DataGridCheckBoxColumn Header="Ativo" Binding="{Binding Path=Active}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Name="tabEdit" Visibility="Hidden" Header="Editar Aplicativo">

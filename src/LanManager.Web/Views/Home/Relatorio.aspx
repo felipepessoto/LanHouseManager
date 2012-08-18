@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.DAL.Client>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.BLL.Client>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Mostrar Relatório
@@ -14,7 +14,7 @@
             }
             else
             {
-                foreach (LanManager.DAL.ClientSession sessao in Model.ClientSession.OrderByDescending(x => x.StartDate))
+                foreach (LanManager.BLL.ClientSession sessao in Model.ClientSession.OrderByDescending(x => x.StartDate))
                 {
                     Response.Write(Html.ActionLink(sessao.StartDate.ToString(), "VerSessao",
                                                    new { id = Model.Id, sessao = sessao.Id }) + "<br />");

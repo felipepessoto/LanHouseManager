@@ -11,8 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using LanManager.BLL;
 using LanManager.OSNativeUtils.Security.Windows;
-using LanManager.DAL;
-using Application=LanManager.DAL.Application;
+using Application=LanManager.BLL.Application;
 
 namespace LanManager.Client
 {
@@ -49,7 +48,7 @@ namespace LanManager.Client
         private void LoadApplications()
         {
             PermissionManager permissoes = new PermissionManager();
-            IEnumerable<LanManager.DAL.Application> aplicacoes = permissoes.ReturnApplicationsAllowed();
+            IEnumerable<LanManager.BLL.Application> aplicacoes = permissoes.ReturnApplicationsAllowed();
 
             var gruposNomes =
                 aplicacoes.Select(x => (x.ApplicationGroup == null ? "Outros" : x.ApplicationGroup.Name)).OrderBy(x => x)
@@ -221,7 +220,7 @@ namespace LanManager.Client
 
         public class FrameApplication : Frame
         {
-            public DAL.Application ApplicationInfo { get; set; }
+            public BLL.Application ApplicationInfo { get; set; }
         }
     }
 }

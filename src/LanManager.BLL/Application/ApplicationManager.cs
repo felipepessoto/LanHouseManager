@@ -5,7 +5,6 @@ using System.Data.Objects.DataClasses;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using LanManager.DAL;
 
 namespace LanManager.BLL
 {

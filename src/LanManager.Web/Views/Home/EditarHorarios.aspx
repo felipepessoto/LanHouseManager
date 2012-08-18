@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.DAL.Client>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.BLL.Client>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Editar Horários
@@ -13,7 +13,7 @@ Horários permitidos:<br /><br />
 <%
     if (!Model.CanAccessAnyTime)
     {
-        foreach (LanManager.DAL.PeriodAllowed periodAllowed in Model.PeriodAllowed.ToList())
+        foreach (LanManager.BLL.PeriodAllowed periodAllowed in Model.PeriodAllowed.ToList())
         {
             string periodo = periodAllowed.DayOfWeek.HasValue ? System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames[periodAllowed.DayOfWeek.Value] : "Todos os dias";
             periodo += " das " + periodAllowed.StartHour + "h até " + periodAllowed.EndHour + "h - Remover";

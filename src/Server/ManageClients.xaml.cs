@@ -4,8 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using LanManager.BLL;
-using LanManager.DAL;
-using LanManager.BLL.Admin;
+using LanManager.BLL.Administrator;
 using LanManager.Instrumentation;
 
 namespace LanManager.Server
@@ -691,7 +690,7 @@ namespace LanManager.Server
             txtAddCPF.Clear();
         }
 
-        private void dtgSearchResult_BeginningEdit(object sender, Microsoft.Windows.Controls.DataGridBeginningEditEventArgs e)
+        private void dtgSearchResult_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             e.Cancel = true;
         }

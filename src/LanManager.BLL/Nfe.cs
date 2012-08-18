@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using LanManager.BLL.Admin;
+using LanManager.BLL.Administrator;
 using System.Globalization;
 using System.IO;
 
@@ -11,7 +11,7 @@ namespace LanManager.BLL
 {
     public class Nfe
     {
-        public void GerarNfe(DAL.Client client, decimal howManyHours, decimal hourValue)
+        public void GerarNfe(Client client, decimal howManyHours, decimal hourValue)
         {
             try
             {

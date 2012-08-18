@@ -11,8 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LanManager.BLL;
-using LanManager.DAL;
-using LanManager.BLL.Admin;
+using LanManager.BLL.Administrator;
 using LanManager.Instrumentation;
 
 namespace LanManager.Server
@@ -118,7 +117,7 @@ namespace LanManager.Server
 
         private void dtgSearchResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var linha = ((Microsoft.Windows.Controls.DataGrid)sender).SelectedItem as DtgSearchView;
+            var linha = ((DataGrid)sender).SelectedItem as DtgSearchView;
 
             if (linha != null)
             {
@@ -177,7 +176,7 @@ namespace LanManager.Server
             SearchAdmin();
         }
 
-        private void dtgSearchResult_BeginningEdit(object sender, Microsoft.Windows.Controls.DataGridBeginningEditEventArgs e)
+        private void dtgSearchResult_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             e.Cancel = true;
         }

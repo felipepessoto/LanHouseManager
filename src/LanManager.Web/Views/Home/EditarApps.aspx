@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.DAL.Client>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.BLL.Client>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Editar
@@ -17,7 +17,7 @@
     if (!Model.CanAccessAnyApplication)
     {
         Response.Write("Aplicativos:<br />");
-        foreach (var application in ((List<LanManager.DAL.Application>) ViewData["AllApps"]))
+        foreach (var application in ((List<LanManager.BLL.Application>) ViewData["AllApps"]))
         {
             Response.Write(application.Name + " ");
             if (Model.ApplicationsAllowed.Any(x => x.Id == application.Id))
@@ -38,7 +38,7 @@
 <br />
     Grupos:<br />
     <%
-        foreach (var group in ((List<LanManager.DAL.ApplicationGroup>) ViewData["AllGroups"]))
+        foreach (var group in ((List<LanManager.BLL.ApplicationGroup>) ViewData["AllGroups"]))
         {
             Response.Write(group.Name + " ");
             if (Model.ApplicationGroupsAllowed.Any(x => x.Id == group.Id))

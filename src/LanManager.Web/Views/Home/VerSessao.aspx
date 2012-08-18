@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.DAL.ClientSession>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LanManager.BLL.ClientSession>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Ver Sessão
@@ -14,7 +14,7 @@
             }
             else
             {
-                foreach (LanManager.DAL.ClientApplicationLog appLog in Model.ClientApplicationLog)
+                foreach (LanManager.BLL.ClientApplicationLog appLog in Model.ClientApplicationLog)
                 {
                     Response.Write(appLog.Application.Name + " das " + appLog.StartDate + " até " + appLog.EndDate + "<br />");
                 }

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LanManager.BLL;
-using LanManager.DAL;
 using LanManager.Instrumentation;
 using Microsoft.Win32;
 
@@ -89,7 +88,7 @@ namespace LanManager.Server
             }
 
 
-            DAL.Application newApp = new DAL.Application();
+            BLL.Application newApp = new BLL.Application();
             newApp.Name = txtAddName.Text;
             newApp.DefaultPath = txtAddPath.Text;
             newApp.RunArguments = txtAddArg.Text;
@@ -219,7 +218,7 @@ namespace LanManager.Server
 
             using (ApplicationManager context = new ApplicationManager())
             {
-                DAL.Application editingApp = context.GetApplicationById(editingAppId, null);
+                BLL.Application editingApp = context.GetApplicationById(editingAppId, null);
                 editingApp.Name = txtEditName.Text;
                 editingApp.DefaultPath = txtEditPath.Text;
                 editingApp.RunArguments = txtEditArg.Text;
@@ -260,11 +259,11 @@ namespace LanManager.Server
 
         private void dtgSearchResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var linha = ((Microsoft.Windows.Controls.DataGrid)sender).SelectedItem as DAL.Application;
+            var linha = ((DataGrid)sender).SelectedItem as BLL.Application;
 
             if (linha != null)
             {
-                DAL.Application editingApp;
+                BLL.Application editingApp;
                 editingAppId = linha.Id;
 
                 using (ApplicationManager context = new ApplicationManager())
@@ -323,7 +322,7 @@ namespace LanManager.Server
             ((TextBox)sender).Text = numbers;
         }
 
-        private void dtgSearchResult_BeginningEdit(object sender, Microsoft.Windows.Controls.DataGridBeginningEditEventArgs e)
+        private void dtgSearchResult_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             e.Cancel = true;
         }

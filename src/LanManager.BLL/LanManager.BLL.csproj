@@ -1,22 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{746010C1-38F2-4494-A1AE-C1A3D7B04022}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LanManager.BLL</RootNamespace>
     <AssemblyName>LanManager.BLL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,29 +28,36 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessPoint\AccessPointManager.cs" />
-    <Compile Include="Admin\AdminManager.cs" />
-    <Compile Include="Admin\ConfigManager.cs" />
-    <Compile Include="Admin\UniqueAdminActiveException.cs" />
+    <Compile Include="Administrator\AdminManager.cs" />
+    <Compile Include="Administrator\ConfigManager.cs" />
+    <Compile Include="Administrator\UniqueAdminActiveException.cs" />
     <Compile Include="Application\ApplicationManager.cs" />
     <Compile Include="BaseManager.cs" />
     <Compile Include="Client\ClientManager.cs" />
     <Compile Include="Client\ClientSessionManager.cs" />
     <Compile Include="Client\InvalidLogOnException.cs" />
     <Compile Include="Client\ClientAlreadyLoggedException.cs" />
+    <Compile Include="LanManager.Designer.cs">
+      <DependentUpon>LanManager.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Nfe.cs" />
     <Compile Include="Permission\ClientHourPermissionException.cs" />
     <Compile Include="Permission\ClientInactiveException.cs" />
@@ -72,17 +73,17 @@
     <Compile Include="SessionStatus.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LanManager.DAL\LanManager.DAL.csproj">
-      <Project>{AA499539-8A83-488F-8DE6-4EDE73AE4F89}</Project>
-      <Name>LanManager.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="ResourceSet\Resources.pt-BR.resx" />
     <EmbeddedResource Include="ResourceSet\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="LanManager.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LanManager.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LanManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="LanManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="LanManagerModelStoreContainer">
-          <EntitySet Name="AccessPoint" EntityType="LanManagerModel.Store.AccessPoint" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Admin" EntityType="LanManagerModel.Store.Admin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Application" EntityType="LanManagerModel.Store.Application" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ApplicationDependentPermission" EntityType="LanManagerModel.Store.ApplicationDependentPermission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ApplicationGroup" EntityType="LanManagerModel.Store.ApplicationGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Client" EntityType="LanManagerModel.Store.Client" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ClientApplicationLog" EntityType="LanManagerModel.Store.ClientApplicationLog" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ClientSession" EntityType="LanManagerModel.Store.ClientSession" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Config" EntityType="LanManagerModel.Store.Config" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GroupDependentPermission" EntityType="LanManagerModel.Store.GroupDependentPermission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Image" EntityType="LanManagerModel.Store.Image" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MinutesPurchased" EntityType="LanManagerModel.Store.MinutesPurchased" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PeriodAllowed" EntityType="LanManagerModel.Store.PeriodAllowed" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AccessPoint" EntityType="LanManagerModel.Store.AccessPoint" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Admin" EntityType="LanManagerModel.Store.Admin" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Application" EntityType="LanManagerModel.Store.Application" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ApplicationDependentPermission" EntityType="LanManagerModel.Store.ApplicationDependentPermission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ApplicationGroup" EntityType="LanManagerModel.Store.ApplicationGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Client" EntityType="LanManagerModel.Store.Client" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ClientApplicationLog" EntityType="LanManagerModel.Store.ClientApplicationLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ClientSession" EntityType="LanManagerModel.Store.ClientSession" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Config" EntityType="LanManagerModel.Store.Config" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GroupDependentPermission" EntityType="LanManagerModel.Store.GroupDependentPermission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Image" EntityType="LanManagerModel.Store.Image" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="MinutesPurchased" EntityType="LanManagerModel.Store.MinutesPurchased" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PeriodAllowed" EntityType="LanManagerModel.Store.PeriodAllowed" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_Application_Application" Association="LanManagerModel.Store.FK_Application_Application">
             <End Role="ApplicationGroup" EntitySet="ApplicationGroup" />
             <End Role="Application" EntitySet="Application" />
@@ -402,7 +402,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LanManagerModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <Schema Namespace="LanManagerModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="LanManagerEntities">
           <EntitySet Name="AccessPoint" EntityType="LanManagerModel.AccessPoint" />
           <EntitySet Name="Application" EntityType="LanManagerModel.Application" />
@@ -654,7 +654,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LanManagerModelStoreContainer" CdmEntityContainer="LanManagerEntities">
           <EntitySetMapping Name="AccessPoint">
             <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.AccessPoint)">
@@ -884,20 +884,20 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:Designer>
     <edmx:Connection>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
     </edmx:Connection>
     <edmx:Options>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="LanManager" ZoomLevel="73">
+      <Diagram Name="LanManager" ZoomLevel="73" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <EntityTypeShape EntityType="LanManagerModel.AccessPoint" Width="1.5" PointX="11.25" PointY="1" Height="1.7879850260416672" IsExpanded="true" />
         <EntityTypeShape EntityType="LanManagerModel.Application" Width="1.5" PointX="3" PointY="5.625" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="LanManagerModel.ApplicationGroup" Width="1.5" PointX="0.75" PointY="6" Height="1.7879850260416657" IsExpanded="true" />
@@ -952,7 +952,7 @@
           <ConnectorPoint PointX="8.25" PointY="9.8816129557291656" /></AssociationConnector>
         <EntityTypeShape EntityType="LanManagerModel.Admin" Width="1.5" PointX="3.375" PointY="0.75" Height="1.9802864583333331" />
         <EntityTypeShape EntityType="LanManagerModel.MinutesPurchased" Width="1.5" PointX="10.5" PointY="10.125" Height="1.7879850260416674" />
-        <AssociationConnector Association="LanManagerModel.FK_MinutesPurchased_Client" >
+        <AssociationConnector Association="LanManagerModel.FK_MinutesPurchased_Client">
           <ConnectorPoint PointX="9.75" PointY="10.629466145833334" />
           <ConnectorPoint PointX="10.5" PointY="10.629466145833334" /></AssociationConnector>
         <EntityTypeShape EntityType="LanManagerModel.Config" Width="1.5" PointX="3" PointY="3.625" Height="1.4033821614583331" /></Diagram></edmx:Diagrams>

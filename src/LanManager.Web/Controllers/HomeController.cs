@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LanManager.BLL;
-using LanManager.DAL;
 
 namespace LanManager.Web.Controllers
 {

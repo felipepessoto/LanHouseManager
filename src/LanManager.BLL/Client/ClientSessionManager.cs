@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LanManager.DAL;
 
 namespace LanManager.BLL
 {
@@ -67,7 +66,7 @@ namespace LanManager.BLL
             return client;
         }
 
-        private ClientSession CheckOpenSession(LanManager.DAL.Client client)
+        private ClientSession CheckOpenSession(LanManager.BLL.Client client)
         {
 
             var session = (from ss in db.ClientSession.Include("AccessPoint")

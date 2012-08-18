@@ -71,7 +71,7 @@ namespace LanManager.Web.Controllers
         {
             using (ClientManager context = new ClientManager())
             {
-                DAL.Client client = context.SearchByUsername(userName, null);
+                BLL.Client client = context.SearchByUsername(userName, null);
                 return client != null && client.Password == password;
             }
         }

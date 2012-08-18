@@ -1,7 +1,6 @@
 ﻿<Window x:Class="LanManager.Server.Principal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     Title="LanManager Admin" Height="600" Width="800" Loaded="Window_Loaded" ResizeMode="CanMinimize">
     <Grid>
@@ -32,17 +31,17 @@
             </TabItem>
             <TabItem Name="tabReports" Header="Relatórios">
                 <Grid Margin="0,0,0,0">
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="15,10,0,0" Name="dtpReportStart" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="160,10,0,0" Name="dtpReportEnd" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <DatePicker Height="25" HorizontalAlignment="Left" Margin="15,10,0,0" Name="dtpReportStart" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <DatePicker Height="25" HorizontalAlignment="Left" Margin="160,10,0,0" Name="dtpReportEnd" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="132,10,0,0" Name="label1" VerticalAlignment="Top" Width="30">até</Label>
-                    <my:DataGrid Visibility="Hidden" AutoGenerateColumns="False" AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue" Margin="0,80,0,0" Name="dtgRelatorio" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
-                        <my:DataGrid.Columns>
-                            <my:DataGridTextColumn Header="Nome Completo" Binding="{Binding Path=Client.FullName}" />
-                            <my:DataGridTextColumn Header="Inicio" Binding="{Binding Path=Session.StartDate}" />
-                            <my:DataGridTextColumn Header="Fim" Binding="{Binding Path=Session.EndDate}" />
-                            <my:DataGridTextColumn Header="Duração" Binding="{Binding Path=Duration}" />
-                        </my:DataGrid.Columns>
-                    </my:DataGrid>
+                    <DataGrid Visibility="Hidden" AutoGenerateColumns="False" AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue" Margin="0,80,0,0" Name="dtgRelatorio" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nome Completo" Binding="{Binding Path=Client.FullName}" />
+                            <DataGridTextColumn Header="Inicio" Binding="{Binding Path=Session.StartDate}" />
+                            <DataGridTextColumn Header="Fim" Binding="{Binding Path=Session.EndDate}" />
+                            <DataGridTextColumn Header="Duração" Binding="{Binding Path=Duration}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,12,121,0" Name="txtUsernameClient" VerticalAlignment="Top" Width="120" />
                     <Button Content="Buscar" Height="23" Margin="0,51,407,0" Name="btnReportSearch" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Click="btnReportSearch_Click"></Button>
                     <CheckBox Content="Filtrar por data" Height="16" Margin="290,15,358,0" Name="chbFilterByDate" VerticalAlignment="Top" IsChecked="True" />

@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LanManager.BLL;
 using LanManager.Instrumentation;
@@ -30,7 +31,7 @@ namespace LanManager.Server
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            DAL.ApplicationGroup newAppGroup = new DAL.ApplicationGroup();
+            BLL.ApplicationGroup newAppGroup = new BLL.ApplicationGroup();
             newAppGroup.Name = txtAddName.Text;
 
             if (txtAddName.Text.Length == 0)
@@ -79,7 +80,7 @@ namespace LanManager.Server
 
             using (ApplicationManager context = new ApplicationManager())
             {
-                DAL.ApplicationGroup editingApp = context.SearchGroupById(editingGroupId, null);
+                BLL.ApplicationGroup editingApp = context.SearchGroupById(editingGroupId, null);
                 editingApp.Name = txtEditName.Text;
 
                 if (context.SearchGroupByName(editingApp.Name, null).Any(x => x.Id != editingGroupId))
@@ -99,11 +100,11 @@ namespace LanManager.Server
 
         private void dtgSearchResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var linha = ((Microsoft.Windows.Controls.DataGrid)sender).SelectedItem as DAL.ApplicationGroup;
+            var linha = ((DataGrid)sender).SelectedItem as BLL.ApplicationGroup;
 
             if (linha != null)
             {
-                DAL.ApplicationGroup editingApp;
+                BLL.ApplicationGroup editingApp;
                 editingGroupId = linha.Id;
 
                 using (ApplicationManager context = new ApplicationManager())
@@ -117,7 +118,7 @@ namespace LanManager.Server
             }
         }
 
-        private void dtgSearchResult_BeginningEdit(object sender, Microsoft.Windows.Controls.DataGridBeginningEditEventArgs e)
+        private void dtgSearchResult_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             e.Cancel = true;
         }

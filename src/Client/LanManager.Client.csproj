@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LanManager.Client</RootNamespace>
     <AssemblyName>LanManager.Client</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -19,6 +19,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,6 +50,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -144,12 +148,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LanManager.BLL\LanManager.BLL.csproj">
-      <Project>{746010C1-38F2-4494-A1AE-C1A3D7B04022}</Project>
+      <Project>{746010c1-38f2-4494-a1ae-c1a3d7b04022}</Project>
       <Name>LanManager.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LanManager.DAL\LanManager.DAL.csproj">
-      <Project>{AA499539-8A83-488F-8DE6-4EDE73AE4F89}</Project>
-      <Name>LanManager.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\LanManager.Instrumentation\LanManager.Instrumentation.csproj">
       <Project>{8D56F347-B181-4939-9E47-5A3796157790}</Project>

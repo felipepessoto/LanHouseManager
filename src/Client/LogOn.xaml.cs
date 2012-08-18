@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LanManager.BLL;
 using System.Configuration;
-using LanManager.BLL.Admin;
+using LanManager.BLL.Administrator;
 using LanManager.OSNativeUtils.Security.Windows;
 
 namespace LanManager.Client
@@ -39,7 +39,7 @@ namespace LanManager.Client
                     using (ClientSessionManager cl = new ClientSessionManager())
                     {
 
-                        DAL.Client client = cl.LogOn(txtUserName.Text, txtPassword.Password, new Guid(ConfigurationManager.AppSettings["machineId"]));
+                        BLL.Client client = cl.LogOn(txtUserName.Text, txtPassword.Password, new Guid(ConfigurationManager.AppSettings["machineId"]));
                         if(client.PasswordExpired)
                         {
                             ChangePassword change = new ChangePassword(client);
@@ -57,7 +57,7 @@ namespace LanManager.Client
                     {
                         if (context.LogOnAdmin(txtUserName.Text, txtPassword.Password, null) != null)
                         {
-                            Application.Current.Shutdown();
+                            System.Windows.Application.Current.Shutdown();
                         }
                         else
                         {
