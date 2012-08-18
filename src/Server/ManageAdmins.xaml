@@ -1,0 +1,51 @@
+﻿<Window x:Class="LanManager.Server.ManageAdmins"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ManageAdmins" Height="600" Width="800">
+    <Grid>
+        <TabControl Margin="0" Name="tabAdmin" ClipToBounds="False" VerticalAlignment="Stretch">
+            <TabItem Name="tabAddAdmin" Header="Adicionar Admin">
+                <Grid Margin="0">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="lblAddUserName" VerticalAlignment="Top" Width="120">Nome de usuário:</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="140,20,0,0" Name="txtAddUserName" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,50,0,0" Name="lblAddPassword" VerticalAlignment="Top" Width="120">Senha:</Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="140,50,0,0" Name="txtAddPassword" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="260,50,0,0" Name="lblAddPasswordConfirm" VerticalAlignment="Top" Width="120">Confirmação:</Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="350,50,0,0" Name="txtAddPasswordConfirm" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,80,0,0" Name="lblAddFullName" VerticalAlignment="Top" Width="120">Nome Completo:</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="140,80,0,0" Name="txtAddFullName" VerticalAlignment="Top" Width="120" />
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,130,0,0" Name="chkAddActive" VerticalAlignment="Top" Width="254">Ativo</CheckBox>
+                    <Button Height="23" Width="120" Margin="6,168,0,0" Name="btnAddAdmin" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnAddAdmin_Click">Adicionar Admin</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabSearchAdmin" Header="Buscar Admin">
+                <Grid Margin="0">
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,20,0,0" Name="txtSearch" VerticalAlignment="Top" Width="120" />
+                    <Button Height="23" HorizontalAlignment="Left" Margin="150,20,0,0" Width="100" Name="btnSearchAdmin" VerticalAlignment="Top" Click="btnSearchAdmin_Click">Buscar</Button>
+                    <my:DataGrid AutoGenerateColumns="False" Margin="6,54,6,6" Name="dtgSearchResult" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="dtgSearchResult_MouseDoubleClick" BeginningEdit="dtgSearchResult_BeginningEdit">
+                        <my:DataGrid.Columns>
+                            <my:DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"/>
+                            <my:DataGridTextColumn Header="Nome de usuário" Binding="{Binding Path=UserName}"/>
+                            <my:DataGridTextColumn Header="Nome completo" Binding="{Binding Path=FullName}"/>
+                            <my:DataGridCheckBoxColumn Header="Ativo" Binding="{Binding Path=Active}"/>
+                        </my:DataGrid.Columns>
+                    </my:DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabEditAdmin" Visibility="Hidden" Header="Editar Admin">
+                <Grid Margin="0">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="lblEditUserName" VerticalAlignment="Top" Width="120">Nome de usuário:</Label>
+                    <TextBox Height="23" IsReadOnly="True" HorizontalAlignment="Left" Margin="140,20,0,0" Name="txtEditUserName" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,50,0,0" Name="lblEditPassword" VerticalAlignment="Top" Width="120">Senha:</Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="140,50,0,0" Name="txtEditPassword" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="260,50,0,0" Name="lblEditPasswordConfirm" VerticalAlignment="Top" Width="120">Confirmação:</Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Right" Margin="0,50,298,0" Name="txtEditPasswordConfirm" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="6,80,0,0" Name="lblEditFullName" VerticalAlignment="Top" Width="120">Nome Completo:</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="140,80,0,0" Name="txtEditFullName" VerticalAlignment="Top" Width="120" />
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,130,0,0" Name="chkEditActive" VerticalAlignment="Top" Width="254">Ativo</CheckBox>
+                    <Button Height="23" Width="120" Margin="6,168,0,0" Name="btnEditAdmin" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnEditAdmin_Click">Salvar</Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

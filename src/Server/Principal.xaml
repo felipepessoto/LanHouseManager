@@ -1,0 +1,149 @@
+﻿<Window x:Class="LanManager.Server.Principal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    Title="LanManager Admin" Height="600" Width="800" Loaded="Window_Loaded" ResizeMode="CanMinimize">
+    <Grid>
+        <TabControl Margin="0" Name="tabPrincipal" ClipToBounds="False" VerticalAlignment="Stretch">
+            <TabItem Name="tabSessions" Header="Sessões">
+                <Grid Margin="0,50,0,0">
+                    <Grid.Resources>
+                        <DataTemplate x:Key="ClientsTemplate">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=StartDate}" FontWeight="Bold" />
+                                    <TextBlock Margin="5,0,0,0" Text="{Binding Path=Client.FullName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"><TextBlock Text="{Binding Path=Client.MinutesLeft}" /><TextBlock Text=" Minutos restantes" /></StackPanel>
+                                <StackPanel Orientation="Horizontal"><TextBlock Text="Computador: " /><TextBlock Text="{Binding Path=AccessPoint.Name}" /></StackPanel>
+                                <Button CommandParameter="{Binding Path=Id}" Content="Fechar" Click="Button_Click"></Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Grid.Resources>
+                    <Grid HorizontalAlignment="Left" Margin="0" Name="gridClientes" VerticalAlignment="Top" />
+                    <ListView ItemTemplate="{StaticResource ClientsTemplate}" HorizontalAlignment="Stretch" Margin="0" Name="ltvClientes" VerticalAlignment="Stretch" ClipToBounds="False" />
+                    <Button Content="Gerenciar Clientes" Height="23" HorizontalAlignment="Left" Margin="6,-43,0,0" Name="btnManageClients" VerticalAlignment="Top" Width="108" Click="btnManageClients_Click"></Button>
+                    <Button Content="Gerenciar Admins" Height="23" HorizontalAlignment="Left" Margin="129,-43,0,0" Name="btnManageAdmins" VerticalAlignment="Top" Width="108" Click="btnManageAdmins_Click" />
+                    <Button Content="Gerenciar Aplicativos" Height="23" HorizontalAlignment="Left" Margin="252,-43,0,0" Name="btnManageApps" VerticalAlignment="Top" Width="120" Click="btnManageApps_Click"></Button>
+                    <Button Content="Gerenciar Grupos" Height="23" HorizontalAlignment="Right" Margin="0,-43,252,0" Name="btnManageAppGroups" VerticalAlignment="Top" Width="126" Click="btnManageAppGroups_Click"></Button>
+                    <Button Content="Configurações" Height="23" HorizontalAlignment="Right" Margin="0,-43,111,0" Name="btnConfigs" VerticalAlignment="Top" Width="126" Click="btnConfigs_Click"></Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabReports" Header="Relatórios">
+                <Grid Margin="0,0,0,0">
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="15,10,0,0" Name="dtpReportStart" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="160,10,0,0" Name="dtpReportEnd" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="132,10,0,0" Name="label1" VerticalAlignment="Top" Width="30">até</Label>
+                    <my:DataGrid Visibility="Hidden" AutoGenerateColumns="False" AlternationCount="2" RowBackground="Beige" AlternatingRowBackground="LightBlue" Margin="0,80,0,0" Name="dtgRelatorio" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+                        <my:DataGrid.Columns>
+                            <my:DataGridTextColumn Header="Nome Completo" Binding="{Binding Path=Client.FullName}" />
+                            <my:DataGridTextColumn Header="Inicio" Binding="{Binding Path=Session.StartDate}" />
+                            <my:DataGridTextColumn Header="Fim" Binding="{Binding Path=Session.EndDate}" />
+                            <my:DataGridTextColumn Header="Duração" Binding="{Binding Path=Duration}" />
+                        </my:DataGrid.Columns>
+                    </my:DataGrid>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,12,121,0" Name="txtUsernameClient" VerticalAlignment="Top" Width="120" />
+                    <Button Content="Buscar" Height="23" Margin="0,51,407,0" Name="btnReportSearch" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Click="btnReportSearch_Click"></Button>
+                    <CheckBox Content="Filtrar por data" Height="16" Margin="290,15,358,0" Name="chbFilterByDate" VerticalAlignment="Top" IsChecked="True" />
+                    <chartingToolkit:Chart Visibility="Hidden" Name="ChartMinutosGastos" Title="Créditos usados" Margin="0,80,0,0">
+                        <!-- Créditos pagos -->
+                        <chartingToolkit:LineSeries
+                            Name="ChartMinutosGastosPagos"
+                            Title="Pagos"
+                            IndependentValueBinding="{Binding StartDate}"
+                            DependentValueBinding="{Binding MinutesPaid}">
+                        </chartingToolkit:LineSeries>
+                        <!-- Bonus -->
+                        <chartingToolkit:LineSeries
+                            Name="ChartMinutosGastosBonus"
+                            Title="Bônus"
+                            IndependentValueBinding="{Binding StartDate}"
+                            DependentValueBinding="{Binding MinutesBonusUsed}">
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:DateTimeAxis Orientation="X" Location="Bottom" Name="ChartMinutosGastosEixoX">
+                                <chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="chartingToolkit:AxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:dd/MM/yy}" />
+                                    </Style>
+                                </chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                            </chartingToolkit:DateTimeAxis>
+                            <chartingToolkit:LinearAxis
+                                Name="ChartMinutosGastosEixoY"
+                                Orientation="Y"
+                                Location="Left"
+                                Title="Minutos gastos"
+                                Minimum="0"
+                                ShowGridLines="True" />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                    <chartingToolkit:Chart Visibility="Hidden" Name="ChartMinutosGastosMensal" Title="Créditos usados" Margin="0,80,0,0">
+                        <!-- Créditos pagos -->
+                        <chartingToolkit:LineSeries
+                            Name="ChartMinutosGastosPagosMensal"
+                            Title="Pagos"
+                            IndependentValueBinding="{Binding StartDate}"
+                            DependentValueBinding="{Binding MinutesPaid}">
+                        </chartingToolkit:LineSeries>
+                        <!-- Bonus -->
+                        <chartingToolkit:LineSeries
+                            Name="ChartMinutosGastosBonusMensal"
+                            Title="Bônus"
+                            IndependentValueBinding="{Binding StartDate}"
+                            DependentValueBinding="{Binding MinutesBonusUsed}">
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:DateTimeAxis Orientation="X" Location="Bottom" Name="ChartMinutosGastosEixoXMensal">
+                                <chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="chartingToolkit:AxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:MM/yy}" />
+                                    </Style>
+                                </chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                            </chartingToolkit:DateTimeAxis>
+                            <chartingToolkit:LinearAxis
+                                Name="ChartMinutosGastosEixoYMensal"
+                                Orientation="Y"
+                                Location="Left"
+                                Title="Minutos gastos"
+                                Minimum="0"
+                                ShowGridLines="True" />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                    <chartingToolkit:Chart Visibility="Hidden" Name="ChartNewUsers" Title="Novos Clientes" Margin="0,80,0,0">
+                        <chartingToolkit:LineSeries
+                            Name="ChartNewUsersLine"
+                            Title="Novos Clientes"
+                            IndependentValueBinding="{Binding RegisterDate}"
+                            DependentValueBinding="{Binding Count}">
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:DateTimeAxis Orientation="X" Location="Bottom" Name="ChartNewUsersEixoXMensal">
+                                <chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="chartingToolkit:AxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:MM/yy}" />
+                                    </Style>
+                                </chartingToolkit:DateTimeAxis.AxisLabelStyle>
+                            </chartingToolkit:DateTimeAxis>
+                            <chartingToolkit:LinearAxis
+                                Name="ChartNewUsersEixoYMensal"
+                                Orientation="Y"
+                                Location="Left"
+                                Title=""
+                                Minimum="0"
+                                ShowGridLines="True" />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,9,247,0" Name="label2" VerticalAlignment="Top" Width="59">Usuário:</Label>
+                    <ComboBox SelectedIndex="0" Height="23" HorizontalAlignment="Left" Margin="15,51,0,0" Name="cbbModoRelatorio" VerticalAlignment="Top" Width="201">
+                        <ComboBoxItem>Relação das Sessões</ComboBoxItem>
+                        <ComboBoxItem>Gráfico Diário de uso</ComboBoxItem>
+                        <ComboBoxItem>Gráfico Mensal de uso</ComboBoxItem>
+                        <ComboBoxItem>Gráfico Mensal de Cadastros</ComboBoxItem>
+                    </ComboBox>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,46,121,0" Name="lblTempoTotal" VerticalAlignment="Top" Width="176"></Label>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

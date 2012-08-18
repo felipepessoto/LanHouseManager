@@ -1,0 +1,162 @@
+﻿<Window x:Class="LanManager.Server.ManageClients"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ManageClients" Height="600" Width="800">
+    <Grid>
+        <TabControl Margin="0" Name="tabClient" ClipToBounds="False" VerticalAlignment="Stretch">
+            <TabItem Name="tabAddClient" Header="Adicionar Cliente">
+                <Grid Margin="0">
+                    <Label Content="Responsável:" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="lblAddPrincipal" VerticalAlignment="Top" Width="120"></Label>
+                    <ComboBox Height="23" Width="200" HorizontalAlignment="Left" Margin="130,20,0,0" Name="cboAddPrincipal" VerticalAlignment="Top" />
+                    <Label Content="Nome de usuário:" Height="28" HorizontalAlignment="Left" Margin="6,50,0,0" Name="lblAddUserName" VerticalAlignment="Top" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,55,0,0" Name="txtAddUserName" VerticalAlignment="Top" Width="120" MaxLength="20" />
+                    <Label Content="Senha:" Height="28" HorizontalAlignment="Left" Margin="6,80,0,0" Name="lblAddPassword" VerticalAlignment="Top" Width="120"></Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="210,85,0,0" Name="txtAddPassword" VerticalAlignment="Top" Width="120" MaxLength="20" />
+                    <Label Content="Confirmação de senha:" Height="28" HorizontalAlignment="Left" Margin="6,110,0,0" Name="lblAddPasswordConfirm" VerticalAlignment="Top" Width="141"></Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="210,115,0,0" Name="txtAddPasswordConfirm" VerticalAlignment="Top" Width="120" MaxLength="20" />
+                    <Label Content="Débito máximo permitido:" Height="28" HorizontalAlignment="Left" Margin="6,138,0,0" Name="lblAddMaxDebit" VerticalAlignment="Top" Width="165"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged"  Height="23" HorizontalAlignment="Left" Margin="210,143,0,0" Name="txtAddMaxDebit" VerticalAlignment="Top" Width="120" Text="0" MaxLength="6" />
+                    <CheckBox Content="Tem permissão após meia-noite" ToolTip="Se o cliente tem permissão do responsável por escrito para acessar os computadores após a meia-noite" Height="16" HorizontalAlignment="Left" Margin="6,168,0,0" Name="chkAddHasMidnightPermission" VerticalAlignment="Top" Width="246"></CheckBox>
+                    <CheckBox Content="Pode acessar todos aplicativos:" Height="16" HorizontalAlignment="Left" Margin="6,198,0,0" Name="chkAddCanAccessAnyApp" VerticalAlignment="Top" Width="246" IsChecked="True" />
+                    <CheckBox Content="Pode acessar qualquer horário:" Height="16" HorizontalAlignment="Left" Margin="6,228,0,0" Name="chkAddCanAccessAnyTime" VerticalAlignment="Top" Width="246" IsChecked="True" />
+                    <TextBox HorizontalAlignment="Left" Margin="210,263,0,244.04" Name="txtAddFullName" Width="120" MaxLength="100" />
+                    <Label Content="Nome completo:" HorizontalAlignment="Left" Margin="6,258,0,244.04" Name="lblAddFullName" Width="120"></Label>
+                    <Label Content="Data de Nascimento:" HorizontalAlignment="Left" Margin="6,0,0,213" Name="lblAddBirthDate" Width="120" Height="29.04" VerticalAlignment="Bottom"></Label>
+                    <my:DatePicker HorizontalAlignment="Left" Margin="210,0,0,211" Name="dtpAddBirthDate" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="24.723" VerticalAlignment="Bottom" />
+                    <Label Content="Número do RG:" Height="28" HorizontalAlignment="Left" Margin="6,0,0,183" Name="lblAddDocumentId" VerticalAlignment="Bottom" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,0,0,183" Name="txtAddDocumentId" VerticalAlignment="Bottom" Width="120" MaxLength="30" />
+                    <Label Content="CPF(apenas números):" Height="28" Margin="6,0,0,149" Name="lblAddCPF" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="184"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,0,0,150" Name="txtAddCPF" VerticalAlignment="Bottom" Width="120" TextChanged="txtNumber_TextChanged" MaxLength="11" />
+                    <Label Content="Apelido:" Height="28" HorizontalAlignment="Left" Margin="6,0,0,120" Name="lblAddNickName" VerticalAlignment="Bottom" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,0,0,120" Name="txtAddNickName" VerticalAlignment="Bottom" Width="120" MaxLength="50" />
+                    <Label Content="Nome do pai ou responsável:" Height="28" HorizontalAlignment="Left" Margin="6,0,0,86" Name="lblAddFatherName" VerticalAlignment="Bottom" Width="165"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,0,0,86" Name="txtAddFatherName" VerticalAlignment="Bottom" Width="120" MaxLength="100" />
+                    <Label Content="Nome da mãe ou responsável:" Height="28" HorizontalAlignment="Left" Margin="6,0,0,56" Name="lblAddMotherName" VerticalAlignment="Bottom" Width="184"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="210,0,0,56" Name="txtAddMotherName" VerticalAlignment="Bottom" Width="120" MaxLength="100" />
+                    <Label Content="Endereço:" Height="28" Margin="377,21,271,0" Name="lblAddStreetAddress" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,21,141,0" Name="txtAddStreetAddress" VerticalAlignment="Top" Width="120" MaxLength="200" />
+                    <Label Content="Bairro:" Height="28" Margin="377,51,271,0" Name="lblAddNeighborhood" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,51,141,0" Name="txtAddNeighborhood" VerticalAlignment="Top" Width="120" MaxLength="200" />
+                    <Label Content="Cidade:" Height="28" Margin="377,85,271,0" Name="lblAddCity" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,85,141,0" Name="txtAddCity" VerticalAlignment="Top" Width="120" MaxLength="50" />
+                    <Label Content="Estado:" Height="28" Margin="377,115,271,0" Name="lblAddState" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,115,141,0" Name="txtAddState" MaxLength="2" VerticalAlignment="Top" Width="120" />
+                    <Label Content="País" Height="28" Margin="377,145,271,0" Name="lblAddCountry" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" Text="Brasil" HorizontalAlignment="Right" Margin="0,145,141,0" Name="txtAddCountry" VerticalAlignment="Top" Width="120" MaxLength="50" />
+                    <Label Content="CEP:" Height="28" Margin="377,175,271,0" Name="lblAddZip" VerticalAlignment="Top"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,175,141,0" Name="txtAddZip" VerticalAlignment="Top" TextChanged="txtNumber_TextChanged" Width="120" MaxLength="8" />
+                    <Label Content="Telefone:" Height="28" Margin="377,205,271,0" Name="lblAddPhone" VerticalAlignment="Top"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged"  Height="23" HorizontalAlignment="Right" Margin="0,205,141,0" Name="txtAddPhone" VerticalAlignment="Top" Width="120" MaxLength="12" />
+                    <Label Content="Telefone celular:" Height="28" Margin="377,235,271,0" Name="lblAddMobilePhone" VerticalAlignment="Top"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged"  Height="23" HorizontalAlignment="Right" Margin="0,235,141,0" Name="txtAddMobilePhone" VerticalAlignment="Top" Width="120" MaxLength="12" />
+                    <Label Content="Email:" Margin="377,265,271,237.04" Name="lblAddEmail"></Label>
+                    <TextBox HorizontalAlignment="Right" Margin="0,265,141,242.04" Name="txtAddEmail" Width="120" MaxLength="50" />
+                    <Label Content="Escola:" Margin="377,0,271,207.04" Name="lblAddSchool" Height="28" VerticalAlignment="Bottom"></Label>
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,141,212.04" Name="txtAddSchool" Width="120" MaxLength="100" Height="23" VerticalAlignment="Bottom" />
+                    <Label Content="Horário escolar:" Margin="377,0,271,182" Name="lblAddSchoolTime" Height="23.317" VerticalAlignment="Bottom"></Label>
+                    <ComboBox HorizontalAlignment="Right" Margin="0,0,141,182" Name="cboAddSchoolTime" Width="120" Height="24.04" VerticalAlignment="Bottom" />
+                    <Button Content="Cadastrar Cliente" Height="23" Margin="350,0,298,88" Name="btnAddClient" VerticalAlignment="Bottom" Click="btnAddClient_Click"></Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabSearchClient" Header="Buscar/Adicionar Créditos">
+                <Grid Margin="0">
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,20,0,0" Name="txtSearch" VerticalAlignment="Top" Width="120" />                    
+                    <Button Content="Buscar" Height="23" HorizontalAlignment="Left" Margin="150,20,0,0" Width="100" Name="btnSearchClient" VerticalAlignment="Top" Click="btnSearchClient_Click"></Button>
+                    <my:DataGrid AutoGenerateColumns="False" Margin="6,54,6,6" Name="dtgSearchResult" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" BeginningEdit="dtgSearchResult_BeginningEdit">
+                        <my:DataGrid.Columns>
+                            <my:DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                            <my:DataGridTextColumn Header="Nome de usuário" Binding="{Binding Path=UserName}"/>
+                            <my:DataGridTextColumn Header="Nome completo" Binding="{Binding Path=FullName}"/>
+                            <my:DataGridTextColumn Header="RG" Binding="{Binding Path=DocumentID}"/>
+                            <my:DataGridTextColumn Header="Nascimento" Binding="{Binding Path=BirthDate}"/>
+                            <my:DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
+                            <my:DataGridTextColumn Header="Créditos(minutos)" Binding="{Binding Path=MinutesLeft}"/>
+                            <my:DataGridTextColumn Header="Créditos bônus" Binding="{Binding Path=MinutesBonus}"/>
+                            <my:DataGridTextColumn Header="Débito máximo permitido" Binding="{Binding Path=MaxDebit}"/>
+                        </my:DataGrid.Columns>
+
+                        <my:DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Foreground="CadetBlue" FontSize="20" Text="{Binding Path=UserName}" Margin="30"/>
+                                    <StackPanel Orientation="Vertical" Margin="5">
+                                        <StackPanel Orientation="Horizontal" Margin="0">
+                                            <Label Width="120">Créditos(minutos):</Label><Label Content="{Binding Path=MinutesLeft}" Width="70" />
+                                            <Label Width="120">Adicionar (R$):</Label>
+                                            <TextBox Name="changeMinutesLeft" FontSize="20" Width="70" Text="0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="3">
+                                            <Label Width="120">Créditos bônus:</Label>
+                                            <TextBox Name="changeMinutesBonus" FontSize="20" Width="70" Text="{Binding Path=MinutesBonus}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="3">
+                                        <Button Width="120" Height="23" Content="Salvar Créditos" CommandParameter="{Binding Path=Id}" Name="DetailSearchClientButton" Click="DetailSearchClientButton_Click"></Button>
+                                        <Button Width="120" Margin="3" Height="23" Content="Editar" CommandParameter="{Binding Path=Id}" Name="SearchEditClientButton" Click="SearchEditClientButton_Click"></Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </my:DataGrid.RowDetailsTemplate>
+                        
+                    </my:DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabEditClient" Visibility="Hidden" Header="Editar Cliente">
+                <Grid Margin="0">
+                    <ComboBox Height="23" Margin="187,20,381,0" Name="cboEditPrincipal" VerticalAlignment="Top" />
+                    <Label Content="Responsável:" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="lblEditPrincipal" VerticalAlignment="Top" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="189,50,0,0" Name="txtEditUserName" IsReadOnly="True" Background="LightGray"  VerticalAlignment="Top" Width="120" />
+                    <Label Content="Nome de usuário:" Height="28" HorizontalAlignment="Left" Margin="6,50,0,0" Name="lblEditUserName" VerticalAlignment="Top" Width="120"></Label>
+                    <Label Content="Senha:" Height="28" HorizontalAlignment="Left" Margin="6,80,0,0" Name="lblEditPassword" VerticalAlignment="Top" Width="120"></Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="189,80,0,0" Name="txtEditPassword" VerticalAlignment="Top" Width="120" MaxLength="20" />
+                    <Label Content="Confirmação de senha:" Height="28" HorizontalAlignment="Left" Margin="6,110,0,0" Name="lblEditPasswordConfirm" VerticalAlignment="Top" Width="137"></Label>
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="189,110,0,0" Name="txtEditPasswordConfirm" VerticalAlignment="Top" Width="120" MaxLength="20" />
+                    <TextBox TextChanged="txtNumber_TextChanged" Height="23" HorizontalAlignment="Left" Margin="188,143,0,0" Name="txtEditMaxDebit" VerticalAlignment="Top" Width="120" Text="0" MaxLength="6" />
+                    <Label Content="Débito máximo permitido:" Height="28" HorizontalAlignment="Left" Margin="5,143,0,0" Name="lblEditMaxDebit" VerticalAlignment="Top" Width="159"></Label>
+                    <CheckBox Content="Tem permissão após meia-noite" ToolTip="Se o cliente tem permissão do responsável por escrito para acessar os computadores após a meia-noite" Height="16" HorizontalAlignment="Left" Margin="5,173,0,0" Name="chkEditHasMidnightPermission" VerticalAlignment="Top" Width="246"></CheckBox>
+                    <CheckBox Content="Pode acessar todos aplicativos" Height="16" HorizontalAlignment="Left" Margin="5,203,0,0" Name="chkEditCanAccessAnyApp" VerticalAlignment="Top" Width="246"></CheckBox>
+                    <CheckBox Content="Pode acessar qualquer horário" Height="16" HorizontalAlignment="Left" Margin="5,233,0,0" Name="chkEditCanAccessAnyTime" VerticalAlignment="Top" Width="246"></CheckBox>
+                    <TextBox HorizontalAlignment="Left" Margin="188,263.04,0,244" Name="txtEditFullName" Width="120" MaxLength="100" />
+                    <Label Content="Nome completo:" HorizontalAlignment="Left" Margin="5,263.04,0,239" Name="lblEditFullName" Width="120"></Label>
+                    <Label Content="Data de Nascimento:" HorizontalAlignment="Left" Margin="5,0,0,208" Name="lblEditBirthDate" Width="120" Height="29.04" VerticalAlignment="Bottom"></Label>
+                    <my:DatePicker HorizontalAlignment="Left" Margin="188,0,0,211" Name="dtpEditBirthDate" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="26.04" VerticalAlignment="Bottom" />
+                    <Label Content="Número do RG:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,178" Name="lblEditDocumentId" VerticalAlignment="Bottom" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="188,0,0,183" Name="txtEditDocumentId" VerticalAlignment="Bottom" Width="120" MaxLength="30" />
+                    <Label Content="CPF(apenas números):" Height="28" HorizontalAlignment="Left" Margin="5,0,0,148" Name="lblEditCPF" VerticalAlignment="Bottom" Width="149"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged" Height="23" HorizontalAlignment="Left" Margin="188,0,0,154" Name="txtEditCPF" VerticalAlignment="Bottom" Width="120" MaxLength="11" />
+                    <Label Content="Apelido:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,114" Name="lblEditNickName" VerticalAlignment="Bottom" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="188,0,0,119" Name="txtEditNickName" VerticalAlignment="Bottom" Width="120" MaxLength="50" />
+                    <Label  Content="Ativo" Height="28" HorizontalAlignment="Left" Margin="5,0,0,84" Name="lblEditActive" VerticalAlignment="Bottom" Width="120"></Label>
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="188,0,0,96" Name="chkEditActive" VerticalAlignment="Bottom" Width="120"></CheckBox>
+                    <Label Content="Nome do pai ou responsável:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,54" Name="lblEditFatherName" VerticalAlignment="Bottom" Width="177"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="188,0,0,59" Name="txtEditFatherName" VerticalAlignment="Bottom" Width="120" MaxLength="100" />
+                    <Label Content="Nome da mãe ou responsável:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,24" Name="lblEditMotherName" VerticalAlignment="Bottom" Width="177"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="188,0,0,29" Name="txtEditMotherName" VerticalAlignment="Bottom" Width="120" MaxLength="100" />
+                    <Label Content="Endereço:" Height="28" HorizontalAlignment="Right" Margin="0,21,241,0" Name="lblEditStreetAddress" VerticalAlignment="Top" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,21,115,0" Name="txtEditStreetAddress" VerticalAlignment="Top" Width="120" MaxLength="200" />
+                    <Label Content="Bairro:" Height="28" HorizontalAlignment="Right" Margin="0,51,241,0" Name="lblEditNeighborhood" VerticalAlignment="Top" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,51,115,0" Name="txtEditNeighborhood" VerticalAlignment="Top" Width="120" MaxLength="200" />
+                    <Label Content="Cidade:" Height="28" Margin="0,80,241,0" Name="lblEditCity" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,80,115,0" Name="txtEditCity" VerticalAlignment="Top" Width="120" MaxLength="50" />
+                    <Label Content="Estado:" Height="28" Margin="0,110,241,0" Name="lblEditState" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,110,115,0" Name="txtEditState" MaxLength="2" VerticalAlignment="Top" Width="120" />
+                    <Label Content="País" Height="28" Margin="0,140,241,0" Name="lblEditCountry" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,140,115,0" Name="txtEditCountry" VerticalAlignment="Top" Width="120" MaxLength="50" />
+                    <Label Content="CEP:" Height="28" Margin="0,170,241,0" Name="lblEditZip" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged" Height="23" HorizontalAlignment="Right" Margin="0,170,115,0" Name="txtEditZip" VerticalAlignment="Top" Width="120" MaxLength="8" />
+                    <Label Content="Telefone:" Height="28" Margin="0,200,241,0" Name="lblEditPhone" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged" Height="23" HorizontalAlignment="Right" Margin="0,200,115,0" Name="txtEditPhone" VerticalAlignment="Top" Width="120" MaxLength="12" />
+                    <Label Content="Telefone celular:" Height="28" Margin="0,230,241,0" Name="lblEditMobilePhone" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox TextChanged="txtNumber_TextChanged" Height="23" HorizontalAlignment="Right" Margin="0,230,115,0" Name="txtEditMobilePhone" VerticalAlignment="Top" Width="120" MaxLength="12" />
+                    <Label Content="Email:" Margin="0,260,241,242.04" Name="lblEditEmail" HorizontalAlignment="Right" Width="120"></Label>
+                    <TextBox HorizontalAlignment="Right" Margin="0,260,115,247.04" Name="txtEditEmail" Width="120" MaxLength="50" />
+                    <Label Content="Escola:" Margin="0,0,241,212.04" Name="lblEditSchool" HorizontalAlignment="Right" Width="120" Height="28" VerticalAlignment="Bottom"></Label>
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,115,217.04" Name="txtEditSchool" Width="120" MaxLength="100" Height="23" VerticalAlignment="Bottom" />
+                    <Label Content="Horário escolar:" Margin="0,0,241,185" Name="lblEditSchoolTime" HorizontalAlignment="Right" Width="120" Height="28.04" VerticalAlignment="Bottom"></Label>
+                    <ComboBox HorizontalAlignment="Right" Margin="0,0,115,188" Name="cboEditSchoolTime" Width="120" Height="23.04" VerticalAlignment="Bottom" />
+                    <Button Content="Salvar alterações" Height="23" Margin="0,0,241,147" Name="btnEditClient" VerticalAlignment="Bottom" Click="btnEditClient_Click" HorizontalAlignment="Right" Width="120"></Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+﻿<Window x:Class="LanManager.Server.LogOn"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Entrar" Height="158" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Height="28" Margin="12,7,0,0" Name="lblUserName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Content="Usuário:" />
+        <TextBox Height="23" Margin="125,7,33,0" Name="txtUserName" VerticalAlignment="Top" CharacterCasing="Lower"></TextBox>
+        <Label Margin="12,31,0,44" Name="lblPassword" HorizontalAlignment="Left" Width="120" Content="Senha:" />
+        <PasswordBox Margin="125,36,33,0" Name="txtPassword" Height="23" VerticalAlignment="Top" />
+        <Button Height="23" HorizontalAlignment="Left" Margin="12,0,0,15" Name="btnLogOn" VerticalAlignment="Bottom" Width="75" Click="btnLogOn_Click" Content="Entrar" IsDefault="True" />
+        
+    </Grid>
+</Window>

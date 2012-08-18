@@ -1,0 +1,960 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LanManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="LanManagerModelStoreContainer">
+          <EntitySet Name="AccessPoint" EntityType="LanManagerModel.Store.AccessPoint" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Admin" EntityType="LanManagerModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Application" EntityType="LanManagerModel.Store.Application" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicationDependentPermission" EntityType="LanManagerModel.Store.ApplicationDependentPermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicationGroup" EntityType="LanManagerModel.Store.ApplicationGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Client" EntityType="LanManagerModel.Store.Client" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientApplicationLog" EntityType="LanManagerModel.Store.ClientApplicationLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientSession" EntityType="LanManagerModel.Store.ClientSession" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Config" EntityType="LanManagerModel.Store.Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupDependentPermission" EntityType="LanManagerModel.Store.GroupDependentPermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Image" EntityType="LanManagerModel.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MinutesPurchased" EntityType="LanManagerModel.Store.MinutesPurchased" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PeriodAllowed" EntityType="LanManagerModel.Store.PeriodAllowed" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Application_Application" Association="LanManagerModel.Store.FK_Application_Application">
+            <End Role="ApplicationGroup" EntitySet="ApplicationGroup" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDependentPermission_Application" Association="LanManagerModel.Store.FK_ApplicationDependentPermission_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="ApplicationDependentPermission" EntitySet="ApplicationDependentPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationDependentPermission_DependentClient" Association="LanManagerModel.Store.FK_ApplicationDependentPermission_DependentClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ApplicationDependentPermission" EntitySet="ApplicationDependentPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Client" Association="LanManagerModel.Store.FK_Client_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client1" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_Application" Association="LanManagerModel.Store.FK_ClientLog_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_Client" Association="LanManagerModel.Store.FK_ClientLog_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_ClientSession" Association="LanManagerModel.Store.FK_ClientLog_ClientSession">
+            <End Role="ClientSession" EntitySet="ClientSession" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSession_AccessPoint" Association="LanManagerModel.Store.FK_ClientSession_AccessPoint">
+            <End Role="AccessPoint" EntitySet="AccessPoint" />
+            <End Role="ClientSession" EntitySet="ClientSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSession_Client" Association="LanManagerModel.Store.FK_ClientSession_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientSession" EntitySet="ClientSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupDependentPermission_ApplicationGroup" Association="LanManagerModel.Store.FK_GroupDependentPermission_ApplicationGroup">
+            <End Role="ApplicationGroup" EntitySet="ApplicationGroup" />
+            <End Role="GroupDependentPermission" EntitySet="GroupDependentPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupDependentPermission_DependentClient" Association="LanManagerModel.Store.FK_GroupDependentPermission_DependentClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="GroupDependentPermission" EntitySet="GroupDependentPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Imagem_Client" Association="LanManagerModel.Store.FK_Imagem_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinutesPurchased_Client" Association="LanManagerModel.Store.FK_MinutesPurchased_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="MinutesPurchased" EntitySet="MinutesPurchased" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodAllowed_DependentClient" Association="LanManagerModel.Store.FK_PeriodAllowed_DependentClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="PeriodAllowed" EntitySet="PeriodAllowed" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="NextCommandToExecute" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DefaultPath" Type="varchar(max)" Nullable="false" />
+          <Property Name="RunArguments" Type="varchar" MaxLength="50" />
+          <Property Name="MinimumAge" Type="int" Nullable="false" />
+          <Property Name="Icon" Type="image" />
+          <Property Name="ApplicationGroupID" Type="uniqueidentifier" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="InstalledAt" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ApplicationDependentPermission">
+          <Key>
+            <PropertyRef Name="Application" />
+            <PropertyRef Name="Client" />
+          </Key>
+          <Property Name="Application" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Client" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MainClient" Type="uniqueidentifier" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PasswordExpired" Type="bit" Nullable="false" />
+          <Property Name="MinutesLeft" Type="int" Nullable="false" />
+          <Property Name="MinutesBonus" Type="int" Nullable="false" />
+          <Property Name="MaxDebit" Type="int" Nullable="false" />
+          <Property Name="HasMidnightPermission" Type="bit" Nullable="false" />
+          <Property Name="CanAccessAnyApplication" Type="bit" />
+          <Property Name="CanAccessAnyTime" Type="bit" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="DocumentID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Nickname" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="MotherName" Type="varchar" MaxLength="100" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Neighborhood" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="char" MaxLength="8" />
+          <Property Name="Phone" Type="bigint" />
+          <Property Name="MobilePhone" Type="bigint" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="School" Type="varchar" MaxLength="100" />
+          <Property Name="SchoolTime" Type="int" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="ClientApplicationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ClientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSessionID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="LastClientPing" Type="datetime" Nullable="false" />
+          <Property Name="Client" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccessPoint" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MinutesPaid" Type="int" />
+          <Property Name="MinutesBonusUsed" Type="int" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ShortName" />
+          </Key>
+          <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GroupDependentPermission">
+          <Key>
+            <PropertyRef Name="ApplicationGroup" />
+            <PropertyRef Name="Client" />
+          </Key>
+          <Property Name="ApplicationGroup" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Client" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Client" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="ImageBinary" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MinutesPurchased">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PeriodAllowed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DayOfWeek" Type="int" />
+          <Property Name="StartHour" Type="int" Nullable="false" />
+          <Property Name="EndHour" Type="int" Nullable="false" />
+          <Property Name="DependentClient" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Application_Application">
+          <End Role="ApplicationGroup" Type="LanManagerModel.Store.ApplicationGroup" Multiplicity="0..1" />
+          <End Role="Application" Type="LanManagerModel.Store.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="ApplicationGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDependentPermission_Application">
+          <End Role="Application" Type="LanManagerModel.Store.Application" Multiplicity="1" />
+          <End Role="ApplicationDependentPermission" Type="LanManagerModel.Store.ApplicationDependentPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationDependentPermission">
+              <PropertyRef Name="Application" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationDependentPermission_DependentClient">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="ApplicationDependentPermission" Type="LanManagerModel.Store.ApplicationDependentPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationDependentPermission">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Client">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="0..1" />
+          <End Role="Client1" Type="LanManagerModel.Store.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client1">
+              <PropertyRef Name="MainClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientLog_Application">
+          <End Role="Application" Type="LanManagerModel.Store.Application" Multiplicity="1" />
+          <End Role="ClientApplicationLog" Type="LanManagerModel.Store.ClientApplicationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientApplicationLog">
+              <PropertyRef Name="ApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientLog_Client">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="ClientApplicationLog" Type="LanManagerModel.Store.ClientApplicationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientApplicationLog">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientLog_ClientSession">
+          <End Role="ClientSession" Type="LanManagerModel.Store.ClientSession" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientApplicationLog" Type="LanManagerModel.Store.ClientApplicationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSession">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientApplicationLog">
+              <PropertyRef Name="ClientSessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSession_AccessPoint">
+          <End Role="AccessPoint" Type="LanManagerModel.Store.AccessPoint" Multiplicity="1" />
+          <End Role="ClientSession" Type="LanManagerModel.Store.ClientSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientSession">
+              <PropertyRef Name="AccessPoint" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSession_Client">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="ClientSession" Type="LanManagerModel.Store.ClientSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientSession">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupDependentPermission_ApplicationGroup">
+          <End Role="ApplicationGroup" Type="LanManagerModel.Store.ApplicationGroup" Multiplicity="1" />
+          <End Role="GroupDependentPermission" Type="LanManagerModel.Store.GroupDependentPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupDependentPermission">
+              <PropertyRef Name="ApplicationGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupDependentPermission_DependentClient">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="GroupDependentPermission" Type="LanManagerModel.Store.GroupDependentPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupDependentPermission">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Imagem_Client">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="Image" Type="LanManagerModel.Store.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinutesPurchased_Client">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="MinutesPurchased" Type="LanManagerModel.Store.MinutesPurchased" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MinutesPurchased">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PeriodAllowed_DependentClient">
+          <End Role="Client" Type="LanManagerModel.Store.Client" Multiplicity="1" />
+          <End Role="PeriodAllowed" Type="LanManagerModel.Store.PeriodAllowed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PeriodAllowed">
+              <PropertyRef Name="DependentClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LanManagerModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="LanManagerEntities">
+          <EntitySet Name="AccessPoint" EntityType="LanManagerModel.AccessPoint" />
+          <EntitySet Name="Application" EntityType="LanManagerModel.Application" />
+          <EntitySet Name="ApplicationGroup" EntityType="LanManagerModel.ApplicationGroup" />
+          <EntitySet Name="Client" EntityType="LanManagerModel.Client" />
+          <EntitySet Name="ClientApplicationLog" EntityType="LanManagerModel.ClientApplicationLog" />
+          <EntitySet Name="ClientSession" EntityType="LanManagerModel.ClientSession" />
+          <EntitySet Name="Image" EntityType="LanManagerModel.Image" />
+          <EntitySet Name="PeriodAllowed" EntityType="LanManagerModel.PeriodAllowed" />
+          <AssociationSet Name="FK_ClientSession_AccessPoint" Association="LanManagerModel.FK_ClientSession_AccessPoint">
+            <End Role="AccessPoint" EntitySet="AccessPoint" />
+            <End Role="ClientSession" EntitySet="ClientSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Application" Association="LanManagerModel.FK_Application_Application">
+            <End Role="ApplicationGroup" EntitySet="ApplicationGroup" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_Application" Association="LanManagerModel.FK_ClientLog_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Client" Association="LanManagerModel.FK_Client_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client1" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_Client" Association="LanManagerModel.FK_ClientLog_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSession_Client" Association="LanManagerModel.FK_ClientSession_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientSession" EntitySet="ClientSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Imagem_Client" Association="LanManagerModel.FK_Imagem_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodAllowed_DependentClient" Association="LanManagerModel.FK_PeriodAllowed_DependentClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="PeriodAllowed" EntitySet="PeriodAllowed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientLog_ClientSession" Association="LanManagerModel.FK_ClientLog_ClientSession">
+            <End Role="ClientSession" EntitySet="ClientSession" />
+            <End Role="ClientApplicationLog" EntitySet="ClientApplicationLog" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationDependentPermission" Association="LanManagerModel.ApplicationDependentPermission">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="GroupDependentPermission" Association="LanManagerModel.GroupDependentPermission">
+            <End Role="ApplicationGroup" EntitySet="ApplicationGroup" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <EntitySet Name="Admin" EntityType="LanManagerModel.Admin" />
+          <EntitySet Name="MinutesPurchased" EntityType="LanManagerModel.MinutesPurchased" />
+          <AssociationSet Name="FK_MinutesPurchased_Client" Association="LanManagerModel.FK_MinutesPurchased_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="MinutesPurchased" EntitySet="MinutesPurchased" /></AssociationSet>
+          <EntitySet Name="Config" EntityType="LanManagerModel.Config" /></EntityContainer>
+        <EntityType Name="AccessPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NextCommandToExecute" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ClientSession" Relationship="LanManagerModel.FK_ClientSession_AccessPoint" FromRole="AccessPoint" ToRole="ClientSession" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DefaultPath" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="RunArguments" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ApplicationGroup" Relationship="LanManagerModel.FK_Application_Application" FromRole="Application" ToRole="ApplicationGroup" />
+          <NavigationProperty Name="ClientApplicationLog" Relationship="LanManagerModel.FK_ClientLog_Application" FromRole="Application" ToRole="ClientApplicationLog" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.ApplicationDependentPermission" FromRole="Application" ToRole="Client" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="MinimumAge" Type="Int32" Nullable="false" />
+          <Property Name="InstalledAt" Type="String" Nullable="true" /></EntityType>
+        <EntityType Name="ApplicationGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Application" Relationship="LanManagerModel.FK_Application_Application" FromRole="ApplicationGroup" ToRole="Application" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.GroupDependentPermission" FromRole="ApplicationGroup" ToRole="Client" />
+          </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="MaxDebit" Type="Int32" Nullable="false" />
+          <Property Name="CanAccessAnyApplication" Type="Boolean" Nullable="false" />
+          <Property Name="CanAccessAnyTime" Type="Boolean" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="DocumentID" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Nickname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" />
+          <Property Name="FatherName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MotherName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="Phone" Type="Int64" />
+          <Property Name="MobilePhone" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="School" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="SchoolTime" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Dependents" Relationship="LanManagerModel.FK_Client_Client" FromRole="Client" ToRole="Client1" />
+          <NavigationProperty Name="Parent" Relationship="LanManagerModel.FK_Client_Client" FromRole="Client1" ToRole="Client" />
+          <NavigationProperty Name="ClientApplicationLog" Relationship="LanManagerModel.FK_ClientLog_Client" FromRole="Client" ToRole="ClientApplicationLog" />
+          <NavigationProperty Name="ClientSession" Relationship="LanManagerModel.FK_ClientSession_Client" FromRole="Client" ToRole="ClientSession" />
+          <NavigationProperty Name="Image" Relationship="LanManagerModel.FK_Imagem_Client" FromRole="Client" ToRole="Image" />
+          <NavigationProperty Name="PeriodAllowed" Relationship="LanManagerModel.FK_PeriodAllowed_DependentClient" FromRole="Client" ToRole="PeriodAllowed" />
+          <NavigationProperty Name="ApplicationsAllowed" Relationship="LanManagerModel.ApplicationDependentPermission" FromRole="Client" ToRole="Application" />
+          <NavigationProperty Name="ApplicationGroupsAllowed" Relationship="LanManagerModel.GroupDependentPermission" FromRole="Client" ToRole="ApplicationGroup" />
+          <Property Name="HasMidnightPermission" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="true" />
+          <Property Name="MinutesLeft" Type="Int32" Nullable="false" />
+          <Property Name="MinutesBonus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MinutesPurchased" Relationship="LanManagerModel.FK_MinutesPurchased_Client" FromRole="Client" ToRole="MinutesPurchased" />
+          <Property Name="CPF" Type="String" Nullable="true" />
+          <Property Name="Neighborhood" Type="String" Nullable="true" />
+          <Property Name="PasswordExpired" Type="Boolean" Nullable="false" /></EntityType>
+        <EntityType Name="ClientApplicationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" />
+          <NavigationProperty Name="Application" Relationship="LanManagerModel.FK_ClientLog_Application" FromRole="ClientApplicationLog" ToRole="Application" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.FK_ClientLog_Client" FromRole="ClientApplicationLog" ToRole="Client" />
+          <NavigationProperty Name="ClientSession" Relationship="LanManagerModel.FK_ClientLog_ClientSession" FromRole="ClientApplicationLog" ToRole="ClientSession" />
+        </EntityType>
+        <EntityType Name="ClientSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="LastClientPing" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AccessPoint" Relationship="LanManagerModel.FK_ClientSession_AccessPoint" FromRole="ClientSession" ToRole="AccessPoint" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.FK_ClientSession_Client" FromRole="ClientSession" ToRole="Client" />
+          <NavigationProperty Name="ClientApplicationLog" Relationship="LanManagerModel.FK_ClientLog_ClientSession" FromRole="ClientSession" ToRole="ClientApplicationLog" />
+          <Property Name="MinutesPaid" Type="Int32" Nullable="true" />
+          <Property Name="MinutesBonusUsed" Type="Int32" Nullable="true" /></EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="ImageBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.FK_Imagem_Client" FromRole="Image" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="PeriodAllowed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DayOfWeek" Type="Int32" />
+          <Property Name="StartHour" Type="Int32" Nullable="false" />
+          <Property Name="EndHour" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.FK_PeriodAllowed_DependentClient" FromRole="PeriodAllowed" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_ClientSession_AccessPoint">
+          <End Role="AccessPoint" Type="LanManagerModel.AccessPoint" Multiplicity="1" />
+          <End Role="ClientSession" Type="LanManagerModel.ClientSession" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Application_Application">
+          <End Role="ApplicationGroup" Type="LanManagerModel.ApplicationGroup" Multiplicity="0..1" />
+          <End Role="Application" Type="LanManagerModel.Application" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ClientLog_Application">
+          <End Role="Application" Type="LanManagerModel.Application" Multiplicity="1" />
+          <End Role="ClientApplicationLog" Type="LanManagerModel.ClientApplicationLog" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Client_Client">
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="0..1" />
+          <End Role="Client1" Type="LanManagerModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ClientLog_Client">
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="1" />
+          <End Role="ClientApplicationLog" Type="LanManagerModel.ClientApplicationLog" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ClientSession_Client">
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="1" />
+          <End Role="ClientSession" Type="LanManagerModel.ClientSession" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Imagem_Client">
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="1" />
+          <End Role="Image" Type="LanManagerModel.Image" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_PeriodAllowed_DependentClient">
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="1" />
+          <End Role="PeriodAllowed" Type="LanManagerModel.PeriodAllowed" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ClientLog_ClientSession">
+          <End Role="ClientSession" Type="LanManagerModel.ClientSession" Multiplicity="1" />
+          <End Role="ClientApplicationLog" Type="LanManagerModel.ClientApplicationLog" Multiplicity="*" />
+        </Association>
+        <Association Name="ApplicationDependentPermission">
+          <End Role="Application" Type="LanManagerModel.Application" Multiplicity="*" />
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupDependentPermission">
+          <End Role="ApplicationGroup" Type="LanManagerModel.ApplicationGroup" Multiplicity="*" />
+          <End Role="Client" Type="LanManagerModel.Client" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" /></EntityType>
+        <EntityType Name="MinutesPurchased">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="LanManagerModel.FK_MinutesPurchased_Client" FromRole="MinutesPurchased" ToRole="Client" /></EntityType>
+        <Association Name="FK_MinutesPurchased_Client">
+          <End Type="LanManagerModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="LanManagerModel.MinutesPurchased" Role="MinutesPurchased" Multiplicity="*" /></Association>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ShortName" /></Key>
+          <Property Name="ShortName" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" /></EntityType></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="LanManagerModelStoreContainer" CdmEntityContainer="LanManagerEntities">
+          <EntitySetMapping Name="AccessPoint">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.AccessPoint)">
+              <MappingFragment StoreEntitySet="AccessPoint">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NextCommandToExecute" ColumnName="NextCommandToExecute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.Application)">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="InstalledAt" ColumnName="InstalledAt" />
+                <ScalarProperty Name="MinimumAge" ColumnName="MinimumAge" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DefaultPath" ColumnName="DefaultPath" />
+                <ScalarProperty Name="RunArguments" ColumnName="RunArguments" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationGroup">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.ApplicationGroup)">
+              <MappingFragment StoreEntitySet="ApplicationGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.Client)">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="PasswordExpired" ColumnName="PasswordExpired" />
+                <ScalarProperty Name="Neighborhood" ColumnName="Neighborhood" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="MinutesBonus" ColumnName="MinutesBonus" />
+                <ScalarProperty Name="MinutesLeft" ColumnName="MinutesLeft" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="HasMidnightPermission" ColumnName="HasMidnightPermission" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="MaxDebit" ColumnName="MaxDebit" />
+                <ScalarProperty Name="CanAccessAnyApplication" ColumnName="CanAccessAnyApplication" />
+                <ScalarProperty Name="CanAccessAnyTime" ColumnName="CanAccessAnyTime" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="SchoolTime" ColumnName="SchoolTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientApplicationLog">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.ClientApplicationLog)">
+              <MappingFragment StoreEntitySet="ClientApplicationLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSession">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.ClientSession)">
+              <MappingFragment StoreEntitySet="ClientSession">
+                <ScalarProperty Name="MinutesBonusUsed" ColumnName="MinutesBonusUsed" />
+                <ScalarProperty Name="MinutesPaid" ColumnName="MinutesPaid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LastClientPing" ColumnName="LastClientPing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Image">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.Image)">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ImageBinary" ColumnName="ImageBinary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeriodAllowed">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.PeriodAllowed)">
+              <MappingFragment StoreEntitySet="PeriodAllowed">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+                <ScalarProperty Name="StartHour" ColumnName="StartHour" />
+                <ScalarProperty Name="EndHour" ColumnName="EndHour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ClientSession_AccessPoint" TypeName="LanManagerModel.FK_ClientSession_AccessPoint" StoreEntitySet="ClientSession">
+            <EndProperty Name="AccessPoint">
+              <ScalarProperty Name="Id" ColumnName="AccessPoint" />
+            </EndProperty>
+            <EndProperty Name="ClientSession">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Application_Application" TypeName="LanManagerModel.FK_Application_Application" StoreEntitySet="Application">
+            <EndProperty Name="ApplicationGroup">
+              <ScalarProperty Name="Id" ColumnName="ApplicationGroupID" />
+            </EndProperty>
+            <EndProperty Name="Application">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="ApplicationGroupID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ClientLog_Application" TypeName="LanManagerModel.FK_ClientLog_Application" StoreEntitySet="ClientApplicationLog">
+            <EndProperty Name="Application">
+              <ScalarProperty Name="Id" ColumnName="ApplicationID" />
+            </EndProperty>
+            <EndProperty Name="ClientApplicationLog">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Client_Client" TypeName="LanManagerModel.FK_Client_Client" StoreEntitySet="Client">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="MainClient" />
+            </EndProperty>
+            <EndProperty Name="Client1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="MainClient" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ClientLog_Client" TypeName="LanManagerModel.FK_ClientLog_Client" StoreEntitySet="ClientApplicationLog">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="ClientID" />
+            </EndProperty>
+            <EndProperty Name="ClientApplicationLog">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ClientSession_Client" TypeName="LanManagerModel.FK_ClientSession_Client" StoreEntitySet="ClientSession">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="Client" />
+            </EndProperty>
+            <EndProperty Name="ClientSession">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Imagem_Client" TypeName="LanManagerModel.FK_Imagem_Client" StoreEntitySet="Image">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="Client" />
+            </EndProperty>
+            <EndProperty Name="Image">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PeriodAllowed_DependentClient" TypeName="LanManagerModel.FK_PeriodAllowed_DependentClient" StoreEntitySet="PeriodAllowed">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="DependentClient" />
+            </EndProperty>
+            <EndProperty Name="PeriodAllowed">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ClientLog_ClientSession" TypeName="LanManagerModel.FK_ClientLog_ClientSession" StoreEntitySet="ClientApplicationLog">
+            <EndProperty Name="ClientSession">
+              <ScalarProperty Name="Id" ColumnName="ClientSessionID" />
+            </EndProperty>
+            <EndProperty Name="ClientApplicationLog">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ApplicationDependentPermission" TypeName="LanManagerModel.ApplicationDependentPermission" StoreEntitySet="ApplicationDependentPermission">
+            <EndProperty Name="Application">
+              <ScalarProperty Name="Id" ColumnName="Application" />
+            </EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="Client" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="GroupDependentPermission" TypeName="LanManagerModel.GroupDependentPermission" StoreEntitySet="GroupDependentPermission">
+            <EndProperty Name="ApplicationGroup">
+              <ScalarProperty Name="Id" ColumnName="ApplicationGroup" />
+            </EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="Client" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.Admin)">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MinutesPurchased">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.MinutesPurchased)">
+              <MappingFragment StoreEntitySet="MinutesPurchased">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_MinutesPurchased_Client" TypeName="LanManagerModel.FK_MinutesPurchased_Client" StoreEntitySet="MinutesPurchased">
+            <EndProperty Name="MinutesPurchased">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="Id" ColumnName="ClientId" /></EndProperty></AssociationSetMapping>
+          <EntitySetMapping Name="Config">
+            <EntityTypeMapping TypeName="IsTypeOf(LanManagerModel.Config)">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="LanManager" ZoomLevel="73">
+        <EntityTypeShape EntityType="LanManagerModel.AccessPoint" Width="1.5" PointX="11.25" PointY="1" Height="1.7879850260416672" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.Application" Width="1.5" PointX="3" PointY="5.625" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.ApplicationGroup" Width="1.5" PointX="0.75" PointY="6" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.Client" Width="1.5" PointX="8.25" PointY="3" Height="7.9416308593749978" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.ClientApplicationLog" Width="1.5" PointX="5.25" PointY="5.875" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.ClientSession" Width="1.5" PointX="13.5" PointY="5.625" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.Image" Width="1.5" PointX="10.5" PointY="7.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LanManagerModel.PeriodAllowed" Width="1.5" PointX="10.5" PointY="4.5" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="LanManagerModel.FK_ClientSession_AccessPoint" ManuallyRouted="false">
+          <ConnectorPoint PointX="12.40625" PointY="2.7879850260416674" />
+          <ConnectorPoint PointX="12.40625" PointY="6.2138196145833335" />
+          <ConnectorPoint PointX="13.5" PointY="6.2138196145833335" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_Application_Application" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.8939925130208328" />
+          <ConnectorPoint PointX="3" PointY="6.8939925130208328" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_ClientLog_Application" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.9612939453125" />
+          <ConnectorPoint PointX="5.25" PointY="6.9612939453125" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_Client_Client" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.7819230769230767" PointY="11.133932291666666" />
+          <ConnectorPoint PointX="8.7819230769230767" PointY="11.383932291666666" />
+          <ConnectorPoint PointX="9.2284615384615378" PointY="11.383932291666666" />
+          <ConnectorPoint PointX="9.2284615384615378" PointY="11.133932291666666" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_ClientLog_Client" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.25" PointY="6.9612939453125" />
+          <ConnectorPoint PointX="6.75" PointY="6.9612939453125" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_ClientSession_Client" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="7.008232421875" />
+          <ConnectorPoint PointX="13.5" PointY="7.008232421875" />
+          </AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_Imagem_Client" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="8.3362939453125" />
+          <ConnectorPoint PointX="10.5" PointY="8.3362939453125" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_PeriodAllowed_DependentClient" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="5.4901432291666667" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="5.4901432291666659" />
+          <ConnectorPoint PointX="10.083333333333334" PointY="5.4901432291666667" />
+          <ConnectorPoint PointX="10.5" PointY="5.4901432291666667" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.FK_ClientLog_ClientSession" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="6.8560986328125" />
+          <ConnectorPoint PointX="10" PointY="6.8560986328125" />
+          <ConnectorPoint PointX="10" PointY="2.75" />
+          <ConnectorPoint PointX="6" PointY="2.75" />
+          <ConnectorPoint PointX="6" PointY="5.875" />
+          </AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.ApplicationDependentPermission" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.3384407552083317" />
+          <ConnectorPoint PointX="8.25" PointY="8.3384407552083317" /></AssociationConnector>
+        <AssociationConnector Association="LanManagerModel.GroupDependentPermission" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="7.7879850260416656" />
+          <ConnectorPoint PointX="1.5" PointY="9.8816129557291656" />
+          <ConnectorPoint PointX="8.25" PointY="9.8816129557291656" /></AssociationConnector>
+        <EntityTypeShape EntityType="LanManagerModel.Admin" Width="1.5" PointX="3.375" PointY="0.75" Height="1.9802864583333331" />
+        <EntityTypeShape EntityType="LanManagerModel.MinutesPurchased" Width="1.5" PointX="10.5" PointY="10.125" Height="1.7879850260416674" />
+        <AssociationConnector Association="LanManagerModel.FK_MinutesPurchased_Client" >
+          <ConnectorPoint PointX="9.75" PointY="10.629466145833334" />
+          <ConnectorPoint PointX="10.5" PointY="10.629466145833334" /></AssociationConnector>
+        <EntityTypeShape EntityType="LanManagerModel.Config" Width="1.5" PointX="3" PointY="3.625" Height="1.4033821614583331" /></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
