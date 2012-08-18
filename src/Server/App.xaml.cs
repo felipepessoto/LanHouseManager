@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Windows;
-using LanManager.Instrumentation;
+using LanManager.BLL;
+using Application = System.Windows.Application;
 
 namespace Server
 {

@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Windows;
 using LanManager.OSNativeUtils.Environment.Windows;
 using System.Linq;
-using LanManager.Instrumentation;
 using LanManager.OSNativeUtils.Security.Windows;
 
 namespace LanManager.Client
@@ -49,7 +48,7 @@ namespace LanManager.Client
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Log.Write(e.ExceptionObject.ToString());
+            LanManager.BLL.Log.Write(e.ExceptionObject.ToString());
         }
     }
 }

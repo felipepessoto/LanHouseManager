@@ -181,10 +181,6 @@
       <Project>{746010c1-38f2-4494-a1ae-c1a3d7b04022}</Project>
       <Name>LanManager.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LanManager.Instrumentation\LanManager.Instrumentation.csproj">
-      <Project>{8d56f347-b181-4939-9e47-5a3796157790}</Project>
-      <Name>LanManager.Instrumentation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

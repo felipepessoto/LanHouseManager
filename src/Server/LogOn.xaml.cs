@@ -1,6 +1,6 @@
 ﻿using System.Windows;
+using LanManager.BLL;
 using LanManager.BLL.Administrator;
-using LanManager.Instrumentation;
 
 namespace LanManager.Server
 {
@@ -9,7 +9,7 @@ namespace LanManager.Server
     /// </summary>
     public partial class LogOn : Window
     {
-        internal static BLL.Admin LoggedAdmin;
+        internal static Admin LoggedAdmin;
 
         public LogOn()
         {

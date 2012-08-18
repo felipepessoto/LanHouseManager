@@ -12,7 +12,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LanManager.BLL;
-using LanManager.Instrumentation;
 
 namespace LanManager.Server
 {

@@ -151,10 +151,6 @@
       <Project>{746010c1-38f2-4494-a1ae-c1a3d7b04022}</Project>
       <Name>LanManager.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LanManager.Instrumentation\LanManager.Instrumentation.csproj">
-      <Project>{8D56F347-B181-4939-9E47-5A3796157790}</Project>
-      <Name>LanManager.Instrumentation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OSNativeUtils\LanManager.OSNativeUtils.csproj">
       <Project>{59139645-9ADC-48BC-AC6D-59074F662B0C}</Project>
       <Name>LanManager.OSNativeUtils</Name>

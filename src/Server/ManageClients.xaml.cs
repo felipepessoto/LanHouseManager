@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using LanManager.BLL;
 using LanManager.BLL.Administrator;
-using LanManager.Instrumentation;
 
 namespace LanManager.Server
 {

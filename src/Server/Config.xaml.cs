@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using LanManager.BLL;
 using LanManager.BLL.Administrator;
-using LanManager.Instrumentation;
 
 namespace LanManager.Server
 {
