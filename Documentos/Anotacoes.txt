@@ -1,0 +1,16 @@
+Travar computador:
+ Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation") ; 
+
+------------------------------------------------------------------------------
+
+You can import the WinLockDll.dll using e.g. If you want to use the Disable CtrAltDel() function:
+
+[DllImport("WinLockDll.dll", EntryPoint = "CtrlAltDel_Enable_Disable")]
+private static extern int CtrlAltDel(bool bEnableDisable);
+
+//implementation
+CtrlAltDel(false); //Disable Ctrl-Alt-Del
+
+//last but not least
+//copy the WinLockDll.dll inside demo folder before building your app.
+//For info, DllImport can be used when you want to access functions that is written in lower level language such as C, C++.

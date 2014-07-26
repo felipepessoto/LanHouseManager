@@ -1,0 +1,60 @@
+XML > mudar a parte de add creditos para adicionar creditos com base no dinheiro que o cliente pagar.configurar valor da hra. - OK
+
+obrigatoriedade de menor de 16 anos ter um responsavel - OK
+
+quando cadastra app apagar o nome qd salvar. - OK
+
+coloca modulo na frente do admin, estacao, web nos diagramas - OK
+
+no editar grupo de app tirar o botao Buscar - OK
+
+resolucao dos icones no modulo estacao - Descartado
+
+criar log de tudo q o admin fizer - OK
+
+Criar imagem mostrando os 3 modulos eo banco - OK
+
+Arrumar tecnologias - LINQ - OK
+
+Colocar relogio mostrando hra no modulo cliente - OK
+
+Derrubar cliente apos 5 min esperando ele volta - OK
+
+Tirar "segure ctrl" do modulo web, adicionar aplicativos e grupo de app e colocar nome do dependete q esta editando - OK
+
+Se o dependente se logar e nao utilizar nada e sair...na hra de gera o relatorio dos pais aparecer "nao acesso nenhum app" - OK
+
+Tirar os dependentes maior de idade da lista de dependetes. - OK
+
+No modulo web se estiver marcado a opcaopara liberar todos os app, fazer com que eles nao aparecam. (igual ao liberacao de horario). - OK
+
+adicionar admin admin no script do BD - OK
+
+vALIDAR IDADE DE NASCIMENTO MAIOR Q DATA ATUAL - OK
+
+Nos apps, adicionar campo pra saber em quais pcs existem esse app - OK
+
+Colocar numero de caracteres minimos para senha - OK
+
+Expiracao de senha do cliente - OK
+
+No diagrama de modulos, explicar - OK
+
+atualizar os requisitos - OK
+
+Mostrar trecho de codigo, de como as 3 camadas sao separadas - OK
+
+
+
+
+Alterar analise de Editar permissões de uso para dependentes
+
+Arrumar trava do win qd reinicia maquina client
+
+Manual de Instalação - Adicionar o sql server e o sql browser a excecao do firewall
+
+Configurar valor minimo de creditos para adicionar
+
+Mostrar todos os pcs disponiveis
+
+testar o alarme de qd esta terminando credito

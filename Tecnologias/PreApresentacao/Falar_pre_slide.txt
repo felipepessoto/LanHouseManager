@@ -1,0 +1,62 @@
+Boa noite vamos aprensentar nosso sistema que é o "Lan Manager". o Lan manager é um software gerenciador de lan house que possui 3 modulos, (servidor, estacao e web).
+no modo servidor o sistema monitora todas as maquinas usadas, ele sera responsavel por toda a parte administrativa desde cadastrar clientes ate gerar relatorio de de uso dos computadores, no modo estacao o sistema bloqueia o computador liberando-o somente para usuarios cadastrados e no sistema web é aonde funciona o controle dos pais que nos vamos falar mais adiante.
+Apos decidir o tema de nosso projeto nos realizamos pesquisas vendo como as lan houses funcionavam e descobrimos que elas estavam sendo prejudicadas por meio das restrincoes criadas pelo juizado da infancia e juventude como por exemplo: Se a criança ou adolescente estiver trajando uniforme escolar não pode freqüentar a Lan House.
+Com base nisso comecamos a realizar pesquisas e descobrimos que nenhum outro software existente auxiliava as lan houses a resolver este problema.
+
+Aqui esta um comparativo do nosso sistema com outros 2 softwares que sao muito utilizados nas lan houses hj em dia:
+<FOTO>
+Como vcs podem ver cada um tem suas vantagens e suas caracteriscas intam quando a lan house for escolher um software ela vai ter que escolher de acordo com suas necessidades.
+
+O diferencial do nosso software em relacao aos outros é o controle dos pais, esse controle divide a responsabilidade que estava só com a lan house de reestringir o acesso de menores de idade em determinados horarios. O controle dos pais funciona da seguinte forma: o responsavel pode acessar o site da lan house de qualquer lugar pela internet e la ele pode reestringir horarios em que o dependente pode acessar e tambem os softwares que vao estar liberados para esse dependente.
+
+
+Outra caracteristica importante do nosso trabalho é criar um sistema Open Source para ser usado academicamente, desta forma os desenvolvedores podem modificar o codigo para suprir suas necessidades.
+A foto abaixo é uma amostra do grafico de uso diario gerado pelo sistema, o funcionario escolhe um determinado periodo de tempo e a forma em que os dados serao mostrado, que podem ser diariamente ou mensalmente.
+Nosso sistema tambem gera o xml de venda no formato da nota fiscal eletronica com todos os campos necessarios para a implantacao da nf-e.
+
+
+Nos seguimos todos os itens da lei que rege sobre as lan houses do estado sp, como por exemplo: menor de idade só pode acessar o computador apos a 00:00 se tiver uma autorizacao por escrito por seu responsavel e na parte de protecao do software nosso sistema trava a maquina totalmente impossibilitando que o cliente use qualquer aplicativo que nao seja os permitidos ou utilize o genreciador de tarefas para finalizar o nosso sistema
+
+
+aqui esta as tecnologias utilizadas durante o desenvolvimento do projeto:
+nos vamos explicar o motivo que nos usamos cada tecnologia
+c# foi utilizado em todo o projeto pois alem de termos mais experiencia é uma linguagem moderna, segura que inclui um grande biblioteca com as funcionalidades mais utilizadas.
+sql server foi usado por ser um software tambem da microsoft oferecendo maior integracao com a plataforma .NET e por sua facilidade e performance 
+asp.net é o framework para desenvolvimente de aplicacoes web do .net em inclui recursos como autenticacao de usuario e controles que agilizam o desenvolvimento. tambem foi utilizado o asp.net mvc que é uma biblioteca que auxilia o desenvolvimento no padrao mvc que permite uma melhor separacao de responasbilidade entre as camadas
+linq to entities  foi utilizado para fazer o mapeamento objeto-relacional entre o sql server e o c#
+wpf foi a biblioteca utilizada para a criacao da interface grafica.
+
+Aqui nos vamos mostrar um pouco da analise do sistema de nosso projeto.
+estes sao alguns dos principais requisitos funciona e nao funcionais.
+aqui vemos alguns dos mais importantes casos de usos como o abrir sessao que representa o acesso de um cliente ao computador e o monitoramento do horario e aplicativos utilizados
+este é o diagrama dos casos de uso onde podemos ver os atores e os casos de uso que eles interagem
+avaliamos quais os principais casos de uso para a criacao do escalonamento e obtivemos esse resultado:
+e aqui nos estamos mostrando o diagrama de seguencia do caso de uso expandido abrir aplicativo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
