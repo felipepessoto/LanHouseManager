@@ -28,16 +28,16 @@ O sistema é composto por três módulos, Servidor, Estação e Web.
 
 No módulo Estação o nosso sistema “trava” a máquina totalmente, somente sendo liberado com login e senha do cliente cadastrado.
 
-[image:Estacao.PNG]
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472048)
 
 No módulo Web os pais podem ver os relatórios de uso de seus dependentes e alterar as permissões de acesso.
 
-[image:Web1.PNG]
-[image:Web2.PNG]
-[image:Web3.PNG]
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472049)
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472050)
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472051)
 
 Já no módulo servidor, o sistema monitora todas as máquinas usadas, sendo responsável por toda a parte administrativa, que vai desde o cadastro dos clientes, adicionar créditos ao cliente, bloquear cliente, gerar relatório com as estatística de uso dos micros, etc.
 
-[image:Cadastro.PNG]
-[image:Diario.PNG]
-[image:Sessoes.PNG]
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472045)
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472046)
+![alt tag](http://download-codeplex.sec.s-msft.com/Download?ProjectName=LanManager&DownloadId=472047)
